@@ -1,0 +1,34 @@
+default_config:
+
+http:
+  ip_ban_enabled: false
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - ::1
+    - 172.16.0.0/12
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+recorder:
+  db_url: "sqlite:///:memory:"
+  commit_interval: 30
+  purge_keep_days: 3
+
+system_log:
+  max_entries: 200
+
+sensor:
+  - platform: systemmonitor
+    resources:
+      - type: processor_use
+      - type: memory_use
+      - type: disk_use
+        arg: /config
+
+switch:
+  platform: tapo_p100_control
+  ip_address: 192.168.1.50
+  email: emiliano.bovetti@gmail.com
+  password: tWgZ8FAVidcmLc

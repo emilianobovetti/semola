@@ -1,0 +1,6 @@
+/config/*
+!/config/configuration.yaml
+!/config/automations.yaml
+!/config/scripts.yaml
+!/config/scenes.yaml
+!/config/custom_components

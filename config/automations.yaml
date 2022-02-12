@@ -1,0 +1,39 @@
+- id: '1644665335030'
+  alias: Scaldabagno on
+  description: ''
+  trigger:
+  - platform: time
+    at: 04:30:00
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.scaldabagno
+  mode: single
+- id: '1644666652965'
+  alias: Notifica scaldabagno
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.scaldabagno
+  condition: []
+  action:
+  - device_id: 0006635399717da2c0ed596357ac1968
+    domain: mobile_app
+    type: notify
+    message: Scaldabagno {{ states.switch.scaldabagno.state }}
+  mode: single
+- id: '1644668442726'
+  alias: Scaldabagno off
+  description: ''
+  trigger:
+  - platform: time
+    at: 07:00:00
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.scaldabagno
+  mode: single
