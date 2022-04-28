@@ -38,10 +38,10 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     try:
         p100.handshake()
         p100.login()
+        plug = P100Plug(p100)
+        add_entities([plug])
     except:
         _LOGGER.error("Could not connect to plug. Possibly invalid credentials")
-
-    add_entities([P100Plug(p100)])
 
 class P100Plug(SwitchEntity):
     """Representation of a P100 Plug"""
@@ -80,9 +80,6 @@ class P100Plug(SwitchEntity):
         self._is_on = False
 
     def update(self):
-        self._p100.handshake()
-        self._p100.login()
-
         data = self._p100.getDeviceInfo()
 
         encodedName = data["result"]["nickname"]
