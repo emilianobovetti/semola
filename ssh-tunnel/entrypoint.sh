@@ -7,7 +7,7 @@ if [ ! -f ~/.ssh/id_ed25519 ]; then
   exit 1
 fi
 
-ssh -tt -p 6805 \
+exec ssh -tt -p 6805 \
   -o "ExitOnForwardFailure yes" \
   -o "ServerAliveInterval 60" \
   -o "ServerAliveCountMax 2" \

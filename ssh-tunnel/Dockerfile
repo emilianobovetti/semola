@@ -4,4 +4,4 @@ RUN apk add --no-cache openssh-client
 
 COPY entrypoint.sh /opt
 
-CMD ["sh", "/opt/entrypoint.sh"]
+CMD ["/opt/entrypoint.sh"]
