@@ -11,5 +11,7 @@ exec ssh -tt -p 6805 \
   -o "ExitOnForwardFailure yes" \
   -o "ServerAliveInterval 60" \
   -o "ServerAliveCountMax 2" \
+  -o "StrictHostKeyChecking no" \
+  -o "UserKnownHostsFile /dev/null" \
   -R 2281:homeassistant:8123 \
   semola@tno.sh
